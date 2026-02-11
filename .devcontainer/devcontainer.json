@@ -1,5 +1,5 @@
 {
-  "name": "claude-code-book-chapter8",
+  "name": "spec-driven-nextjs",
   "image": "mcr.microsoft.com/devcontainers/base:bookworm",
   "workspaceFolder": "/workspaces/claude-code-book-chapter8",
   "features": {

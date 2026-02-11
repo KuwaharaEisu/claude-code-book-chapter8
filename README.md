@@ -1,32 +1,91 @@
-# claude-code-book-chapter8
+# Spec-Driven Development Template
 
-本リポジトリは技術評論社より発行されている[「実践Claude Code入門 - 現場で活用するためのAIコーディングの思考法」](https://www.amazon.co.jp/dp/4297153548)のサンプルコードを管理するGitHubリポジトリです。
+スペック駆動開発のためのプロジェクトテンプレートです。Next.js + TypeScript + Tailwind CSS をベースに、Claude Code のスキル・コマンドを活用した体系的な開発フローを提供します。
 
-リポジトリ内のコード・プロンプトに関する詳細な解説は、書籍をご覧ください。
+## 技術スタック
 
-書籍の内容に関するご質問、不備のご指摘については以下のリポジトリのイシューよりお願いいたします。
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Vitest + React Testing Library
+- ESLint + Prettier
+- Husky + lint-staged
 
-https://github.com/GenerativeAgents/claude-code-book
+## プロジェクト構造
 
-## 注意事項
-
-本リポジトリの内容は読者からのフィードバックを受けて、より性能の良いプロンプトに変更されることがあります。差分は随時書籍に反映されますが、お手元の版との差分があることをご承知おきください。
+```
+.claude/                 # Claude Code 設定
+  commands/              # /setup-project, /add-feature, /review-docs
+  skills/                # ドキュメント作成・管理用スキル（7種）
+  agents/                # レビュー用サブエージェント（2種）
+docs/
+  ideas/                 # アイデア・下書き（自由形式）
+  product-requirements.md  # ← /setup-project で自動生成
+  functional-design.md
+  architecture.md
+  repository-structure.md
+  development-guidelines.md
+  glossary.md
+.steering/               # 作業単位のドキュメント（ローカルのみ、gitignore済み）
+app/                     # Next.js App Router
+CLAUDE.md                # プロジェクトメモリ
+```
 
 ## 使い方
 
-### 1. リポジトリのクローン
+### 1. セットアップ
 
 ```bash
-git clone [このリポジトリ] claude-code-book-chapter8
-cd claude-code-book-chapter8
+npm install
 ```
 
-### 2. Dev Container経由で開く
+Dev Container を利用する場合は、VS Code で「Reopen in Container」を選択してください（Docker が必要です）。
 
-Visual Studio Codeで「Reopen in Container」を選択すると、自動的に次のように環境構築が行われます。
+### 2. アイデアファイルの配置
 
-- Node.js LTS環境の構築
-- npm installの実行
-- Claude Codeの最新版インストール
+`docs/ideas/` にプロダクトのアイデアや要件をマークダウンで配置します。
 
-※ Dev Containerを利用する際は、事前にDockerのインストールが必要です。
+```bash
+# 例
+docs/ideas/my-product-idea.md
+```
+
+形式は自由です。壁打ちやブレストの成果物をそのまま置いてください。
+
+### 3. プロジェクトの初期化
+
+Claude Code で以下を実行すると、アイデアファイルをもとに6つの永続ドキュメントが対話的に作成されます。
+
+```
+/setup-project
+```
+
+### 4. 機能の実装
+
+```
+/add-feature [機能名]
+```
+
+ドキュメントに基づいて、計画 → 実装 → テスト → 検証が可能な限り自動で実行されます。解決困難な問題が発生した場合はユーザーに確認を求めます。
+
+### 5. ドキュメントのレビュー
+
+```
+/review-docs docs/product-requirements.md
+```
+
+## 開発コマンド
+
+```bash
+npm run dev          # 開発サーバー起動
+npm run build        # プロダクションビルド
+npm run start        # プロダクションサーバー起動
+npm run typecheck    # 型チェック
+npm run lint         # リント
+npm run test         # テスト実行
+npm run test:watch   # テスト（ウォッチモード）
+npm run test:coverage # カバレッジ付きテスト
+```
+
+## ライセンス
+
+MIT

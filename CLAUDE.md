@@ -3,8 +3,10 @@
 ## 技術スタック
 
 - 開発環境: devcontainer
-- Node.js v24.11.0
-- TypeScript 5.x
+- Node.js LTS
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- テスト: Vitest + React Testing Library
 - パッケージマネージャー: npm
 
 ## スペック駆動開発の基本原則
@@ -125,4 +127,6 @@
 
 - 特定の作業に特化
 - 作業ごとに新規作成
-- 履歴として保持
+- `.gitignore`で除外済み（ローカル作業用、リモートにはpushされない）
+- 作業完了後もローカルに履歴として残る
+- 不要になったら手動で削除可能

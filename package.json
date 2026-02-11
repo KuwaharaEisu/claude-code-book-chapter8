@@ -1,12 +1,14 @@
 {
-  "name": "claude-code-book-chapter8",
+  "name": "spec-driven-nextjs-template",
   "version": "0.1.0",
-  "description": "Claude Code book - Chapter 8 template",
+  "private": true,
+  "description": "Spec-driven development template with Next.js + TypeScript + Tailwind CSS",
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint .",
     "format": "npx prettier --write .",
     "typecheck": "tsc --noEmit",
@@ -18,19 +20,35 @@
   "keywords": [
     "spec-driven-development",
     "claude-code",
-    "template"
+    "template",
+    "nextjs",
+    "tailwindcss"
   ],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "next": "^16.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "^20.11.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.4.0",
     "@vitest/coverage-v8": "^2.0.0",
     "@vitest/ui": "^2.0.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.0",
+    "jsdom": "^26.1.0",
     "lint-staged": "^15.2.0",
+    "postcss": "^8.5.0",
     "prettier": "^3.2.0",
+    "tailwindcss": "^4.1.0",
     "typescript": "~5.3.0",
     "typescript-eslint": "^8.0.0",
     "vitest": "^2.0.0"
@@ -38,6 +56,9 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx,json,css,md}": [
       "prettier --write"
     ]
   }
